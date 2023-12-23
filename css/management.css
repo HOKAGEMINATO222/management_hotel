@@ -1,4 +1,5 @@
 
+
   .management-container {
     position: relative;
   }
@@ -599,7 +600,7 @@
 
 .management-content-container .post-content .post-content-list{
     display: inline-block;
-    color: red;
+    color: rgb(0, 119, 255);
     font-weight: bold;
     font-size: 23px;
     width: 700px;
@@ -617,6 +618,9 @@
   margin-top: 80px;
   margin-left: 600px;
   transition-duration: 0.3s;
+}
+.management-content-container .post-content .post-content-list:hover{
+  color:red;
 }
 .management-content-container .post-content .post-content-list .detail:hover{
   color:#26B4FF;
@@ -731,7 +735,7 @@
   }
   .edit-room-container .edit-room-modal {
     width: 50%;
-    height: 73%;
+    height: 83%;
     background-color: white;
     color: black;
     padding: 4px 20px;
@@ -849,7 +853,7 @@
   }
   .edit-book-room-container .edit-book-room-modal {
     width: 50%;
-    height: 75%;
+    height: 83%;
     background-color: white;
     color: black;
     padding: 4px 20px;
@@ -1013,3 +1017,69 @@ html:not(.dark-style) .account-settings-links .list-group-item.active {
     padding     : 0.85rem 1.5rem;
     border-color: rgba(24, 28, 33, 0.03) !important;
 }
+
+
+
+
+
+
+
+
+
+
+
+.post-content {
+  transition: transform 0.3s ease;
+}
+
+.post-content:hover {
+  transform: scale(1.05);
+}
+.post-content.selected {
+  border: 2px solid #d9ff00;
+}
+.post-detail-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.post-detail-content {
+  background-color: #fefefe;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.post-detail-content img {
+  max-width: 100%;
+  max-height: 400px;
+}
+
+.close-modal {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  color: #555;
+}
+
+
+.post-detail-modal .red-text {
+  color: red; 
+  font-size: 20px; 
+}
+
+
+
+
+
+
+
