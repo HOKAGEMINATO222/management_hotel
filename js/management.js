@@ -12,6 +12,7 @@ const displayListRoom = $(".management-content-container.list-room");
 const displayListBookRoom = $(".management-content-container.list-book-room");
 const displayListStaff = $(".management-content-container.list-staff");
 const displayAccount = $(".management-content-container.account");
+const displayMenu = $(".management-content-container.menu");
 
 const editRoomContainer = $(".edit-room-container");
 const closeEditRoomContainer = $(".edit-room-container .icon-close");
@@ -40,6 +41,20 @@ closeEditStaff.onclick =() =>{
     editStaff.classList.remove("active");
 }
 
+function ToMenu() {
+    var sidebarElements = document.querySelectorAll(".management-container .management-sidebar-content .management-sidebar-list ul li");
+    sidebarElements.forEach(function (element) {
+      element.classList.remove("active");
+    });
+  
+    displayPost.classList.remove("active");
+    displayListRoom.classList.remove("active");
+    displayListBookRoom.classList.remove("active");
+    displayListStaff.classList.remove("active");
+    displayAccount.classList.remove("active");
+    displayMenu.classList.add("active");
+    
+  }
 
 
 post.onclick = () => {
@@ -55,6 +70,7 @@ post.onclick = () => {
     account.classList.remove("active");
     displayPost.classList.add("active");
     post.classList.add("active");
+    displayMenu.classList.remove("active");
 };
 
 listRoom.onclick =() => {
@@ -70,6 +86,7 @@ listRoom.onclick =() => {
     account.classList.remove("active");
     displayListRoom.classList.add("active");
     listRoom.classList.add("active");
+    displayMenu.classList.remove("active");
 
 };
 
@@ -86,6 +103,7 @@ listBookRoom.onclick =()=>{
     account.classList.remove("active");
     displayListBookRoom.classList.add("active");
     listBookRoom.classList.add("active");
+    displayMenu.classList.remove("active");
 };
 
 listStaff.onclick =()=>{
@@ -101,6 +119,7 @@ listStaff.onclick =()=>{
     account.classList.remove("active");
     displayListStaff.classList.add("active");
     listStaff.classList.add("active");
+    displayMenu.classList.remove("active");
 };
 
 account.onclick =()=>{
@@ -116,6 +135,7 @@ account.onclick =()=>{
     account.classList.remove("active");
     displayAccount.classList.add("active");
     account.classList.add("active");
+    displayMenu.classList.remove("active");
 };
 
 const handleEditRoom = () => {
@@ -247,7 +267,7 @@ function displayNewPost(post) {
     var newPostDiv = document.createElement('div');
     newPostDiv.classList.add('post-content', 'selected'); // Initially selected
     newPostDiv.innerHTML = `
-        <img onclick="showPostDetail('/${post.image}', '${post.content}')" class="img-post" src="/${post.image}" style="height: 200px; width: 35%;">
+        <img  onclick="showPostDetail('/${post.image}', '${post.content}')" class="img-post" src="/${post.image}" style="height: 200px; width: 35%; cursor: zoom-in;">
         <div class="post-content-list">
             <span class="post-content-list" style="width: 100%; text-align: center;">${post.content}</span>
             <div class="detail">
@@ -330,7 +350,13 @@ function clear() {
 // hàm xóa
 function deleteStaff(index) {
     var confirmDelete = confirm("Bạn có chắc chắn muốn xóa nhân viên này ?");
-    data_staff.splice(index, 1);
+    if(confirmDelete){
+        data_staff.splice(index, 1);
+    }
+    else{
+        return 0;
+    }
+
     outputStaff();
 }
 // hàm chỉnh sửa
@@ -344,7 +370,9 @@ function changeStaff(index){
             document.getElementById("staff-position").value = data_staff[index].position;
         }
     }
-    deleteStaff(index)
+    data_staff.splice(index, 1);
+    outputStaff();
+    
 }
 
 
@@ -385,11 +413,11 @@ document.addEventListener("DOMContentLoaded", function () {
         while (table.rows.length > 1) {
             table.deleteRow(1);
         }
-
+    
         roomsData.forEach(function (room, index) {
             const row = table.insertRow(-1);
             row.innerHTML = `
-                <td>${room.stt}</td>
+                <td>${index + 1}</td>
                 <td>${room.name}</td>
                 <td>
                     <div class="room-image" style="background: url('${room.image}') center /cover no-repeat;"></div>
@@ -407,12 +435,20 @@ document.addEventListener("DOMContentLoaded", function () {
                         <i class="fa-solid fa-pen"></i>
                     </button>
                     <button class="btn-delete-room" onclick="handleDeleteRoom(${index})">
-                        <i class="fa-solid fa-trash"></i>
+                            <i class="fa-solid fa-trash"></i>
                     </button>
                 </td>`;
+    
+            // Thêm sự kiện click vào nút "Xóa" cho mỗi phòng
+            const deleteButton = row.querySelector(".btn-delete-room");
+            deleteButton.addEventListener("click", function () {
+                handleDeleteRoom(index);
+            });
         });
     }
-
+    
+    
+    
     function AddRoom() {
         const roomName = document.getElementById("room-name").value;
         const roomImage = document.getElementById("room-image").value;
@@ -444,7 +480,41 @@ document.addEventListener("DOMContentLoaded", function () {
         const confirmDelete = confirm("Bạn có chắc chắn muốn xóa phòng này?");
         if (confirmDelete) {
             roomsData.splice(index, 1);
+            // Cập nhật lại STT
+            roomsData.forEach((room, i) => {
+                room.stt = i + 1;
+            });
             showRooms();
         }
     }
+    
 });
+
+
+document.querySelector('.fa-solid.fa-caret-down').addEventListener('click', function() {
+    document.querySelector('.admin-info').classList.add('active');
+});
+
+document.addEventListener('click', function(event) {
+    var adminInfo = document.querySelector('.admin-info');
+    if (!event.target.closest('.admin-info') && !event.target.closest('.fa-solid.fa-caret-down')) {
+        adminInfo.classList.remove('active');
+    }
+});
+
+
+
+// JavaScript để cập nhật width theo kích thước của .management-sidebar
+function updateSidebarWidth() {
+    const managementSide = document.querySelector('.management-side');
+    const managementSidebar = document.querySelector('.management-container .management-sidebar');
+  
+    if (managementSidebar) {
+      const sidebarWidth = managementSidebar.offsetWidth;
+      managementSide.style.width = `calc(100% - ${sidebarWidth}px)`;
+    }
+  }
+  
+  // Gọi hàm khi trang được tải và khi kích thước của trình duyệt thay đổi
+  window.onload = window.onresize = updateSidebarWidth;
+  
