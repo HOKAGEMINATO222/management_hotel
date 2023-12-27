@@ -116,7 +116,7 @@
   }
   
   .management-sidebar-header .management-sidebar-avatar {
-    background: url("/img/avatar.jpg") center/cover no-repeat;
+    background: url("../img/avatar.jpg") center/cover no-repeat;
     width: 40px;
     height: 40px;
     border-radius: 50%;
