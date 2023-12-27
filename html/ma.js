@@ -287,20 +287,18 @@ function displayNewPost(post) {
 
 
 
-
+/* hàm thêm nhân viên*/
 var data_staff = [];
 // hàm thêm nhân viên
 function inputStaff() {
     var staff_name = document.getElementById("staff-name").value;
     var staff_gender = document.getElementById("staff-gender").value;
     var staff_date = document.getElementById("staff-date").value;
-    var staff_address = document.getElementById("staff-address").value;
-    var staff_phone = document.getElementById("staff-phone").value;
-    var staff_email = document.getElementById("staff-email").value;
+    var staff_position = document.getElementById("staff-position").value;
 
    
-    if (!staff_name || !staff_gender || !staff_date || !staff_phone || !staff_address || !staff_email) {
-        alert("Vui lòng điền đầy đủ thông tin nhân viên");
+    if (!staff_name || !staff_gender || !staff_date || !staff_position) {
+        alert("Vui lòng điền đầy đủ thông tin phòng");
         return;
     }
 
@@ -308,9 +306,7 @@ function inputStaff() {
         name: staff_name,
         gender: staff_gender,
         date: staff_date,
-        address: staff_address,
-        phone: staff_phone,
-        email: staff_email
+        position: staff_position,
     };
   
     data_staff.push(obj);
@@ -321,15 +317,13 @@ function inputStaff() {
 // in bảng 
 function outputStaff() {
     var table = `<tr>
-    <th style="width: 5%">STT</th>
-    <th style="width: 20%">Họ Tên</th>
-    <th style="width: 10%">Giới Tính</th>
-    <th style="width: 10%">Ngày Sinh</th>
-    <th style="width: 15%">Địa Chỉ</th>
-    <th style="width: 15%">Số Điện Thoại</th>
-    <th style="width: 15%">Email</th>
-    <th style="width: 10%">Active</th>
-</tr>`;
+        <th style="width: 5%">STT</th>
+        <th style="width: 25%">Họ Tên</th>
+        <th style="width: 15%">Giới Tính</th>
+        <th style="width: 15%">Ngày Sinh</th>
+        <th style="width: 20%">Chức vụ</th>
+        <th style="width: 20%">Hoạt Động</th>
+    </tr>`;
 
     for (let i = 0; i < data_staff.length; i++) {
         table += `<tr>
@@ -337,12 +331,10 @@ function outputStaff() {
             <td>${data_staff[i].name}</td>
             <td>${data_staff[i].gender}</td>
             <td>${data_staff[i].date}</td>
-            <td>${data_staff[i].address}</td>
-            <td>${data_staff[i].phone}</td>
-            <td>${data_staff[i].email}</td>
+            <td>${data_staff[i].position}</td>
             <td>
-                <button style="margin:5px" class="btn-add-staff" onclick="deleteStaff(${i})"><i class="fa-solid fa-trash"></i>Xóa </button>
-                <button style="margin:5px" class="btn-add-staff" onclick="changeStaff(${i})"><i <i class="fa-solid fa-arrows-rotate"></i>Sửa </button>
+                <button class="btn-add-staff" onclick="deleteStaff(${i})"><i class="fa-solid fa-trash"></i>Xóa </button>
+                <button class="btn-add-staff" onclick="changeStaff(${i})"><i <i class="fa-solid fa-arrows-rotate"></i>Sửa </button>
             </td>
         </tr>`;
     }
@@ -353,9 +345,7 @@ function clear() {
     document.getElementById("staff-name").value = "";
     document.getElementById("staff-gender").value = "";
     document.getElementById("staff-date").value = "";
-    document.getElementById("staff-address").value = "";
-    document.getElementById("staff-phone").value = "";
-    document.getElementById("staff-email").value = "";
+    document.getElementById("staff-position").value = "";
 }
 // hàm xóa
 function deleteStaff(index) {
@@ -377,9 +367,7 @@ function changeStaff(index){
             document.getElementById("staff-name").value = data_staff[index].name;
             document.getElementById("staff-gender").value = data_staff[index].gender;
             document.getElementById("staff-date").value = data_staff[index].date;
-            document.getElementById("staff-address").value = data_staff[index].position;
-            document.getElementById("staff-phone").value = data_staff[index].position;
-            document.getElementById("staff-email").value = data_staff[index].position;
+            document.getElementById("staff-position").value = data_staff[index].position;
         }
     }
     data_staff.splice(index, 1);

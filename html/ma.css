@@ -1,4 +1,4 @@
-  .management-container {
+.management-container {
     position: relative;
   }
 
@@ -116,7 +116,7 @@
   }
   
   .management-sidebar-header .management-sidebar-avatar {
-    background: url("../img/avatar.jpg") center/cover no-repeat;
+    background: url("/img/avatar.jpg") center/cover no-repeat;
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -488,7 +488,7 @@
   }
   .add-staff-container .add-staff-modal {
     width: 50%;
-    height: 88%;
+    height: 78%;
     background-color: white;
     color: black;
     padding: 4px 20px;
@@ -526,9 +526,8 @@
     font-weight: 500;
   }
   .add-staff-container .add-staff-modal .content .btn-submit {
-    margin-top: 10px;
+    margin-top: 90px;
     padding: 8px 20px;
-    width: 100px;
   }
 
 
