@@ -277,7 +277,7 @@ function displayNewPost(post) {
         </div>
     `;
 
-    // Add the same style classes as the existing posts
+
     newPostDiv.classList.add('post-content', 'selected');
 
     postContainer.appendChild(newPostDiv);

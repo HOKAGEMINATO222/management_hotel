@@ -108,7 +108,7 @@
                 </div>
                 <!-- Các bài viết -->
                 <div class="post-content" >
-                    <img  onclick="showPostDetail('/img/post1.jpg')" class="img-post" src="../img/post1.jpg" style="height: 200px; width: 35%; cursor: zoom-in;">
+                    <img  onclick="showPostDetail('../img/post1.jpg')" class="img-post" src="../img/post1.jpg" style="height: 200px; width: 35%; cursor: zoom-in;">
                     <div class="post-content-list">
                         <span class="post-content-list" style="width: 100%; text-align: center;">Ưu đãi cực SỐC với chương trình GIẢM 50% không giới hạn giá trị tối đa</span>
                         <div class="detail">
@@ -119,7 +119,7 @@
                 </div>
                 
                 <div class="post-content">
-                    <img  onclick="showPostDetail('/img/post2.jpg')" class="img-post" src="../img/post2.jpg" style="height: 200px; width: 35%; cursor: zoom-in;">
+                    <img  onclick="showPostDetail('../img/post2.jpg')" class="img-post" src="../img/post2.jpg" style="height: 200px; width: 35%; cursor: zoom-in;">
                     <div class="post-content-list">
                         <span class="post-content-list" style="width: 100%; text-align: center;">Khuyến mãi 40% khi đặt phòng thông qua trang website của khách sạn</span>
                         <div class="detail">
@@ -130,7 +130,7 @@
                 </div>
 
                 <div class="post-content">
-                    <img  onclick="showPostDetail('/img/post3.jpg' )" class="img-post" src="../img/post3.jpg" style="height: 200px; width: 35%; cursor: zoom-in;">
+                    <img  onclick="showPostDetail('../img/post3.jpg' )" class="img-post" src="../img/post3.jpg" style="height: 200px; width: 35%; cursor: zoom-in;">
                     <div class="post-content-list">
                         <span class="post-content-list" style="width: 100%; text-align: center;">Đặt phòng khách sạn trên ứng dụng ngân hàng và ví VNPAY giảm tới 300.000 đồng</span>
                         <div class="detail">
@@ -334,6 +334,10 @@
                     <i class="fa-solid fa-xmark icon-close"></i>
                     <div class="title">Thêm Nhân Viên</div>
                     <div class="content">
+                        <div class="staff-id">
+                            <label for="staff-id">Id Nhân Viên</label>
+                            <input type="text" id="staff-id" name="staff-id" />
+                        </div>     
                     <div class="staff-name">
                         <label for="staff-name">Họ Tên</label>
                         <input type="text" id="staff-name" name="staff-name" />
@@ -412,9 +416,9 @@
 
                 </div>
                 <div class="staff">
-                    <table id="aa" style="width: 100%">
+                    <table id="" style="width: 100%">
                         <tr>
-                            <th style="width: 5%">STT</th>
+                            <th style="width: 5%">Id </th>
                             <th style="width: 15%">Họ Tên</th>
                             <th style="width: 10%">Giới Tính</th>
                             <th style="width: 10%">Ngày Sinh</th>
